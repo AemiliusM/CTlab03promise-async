@@ -36,7 +36,7 @@ describe('simpleDb creates files, as well as reads and copies them', () => {
 
     return Promise.all([dir.save(file1), dir.save(file2)]).then(() => {
       dir.getAll().then((res) => {
-        expect(res).toEqual([file1, file2]);
+        expect(res).toEqual(Array.toContain([file1, file2]));
       })
     })
   })
