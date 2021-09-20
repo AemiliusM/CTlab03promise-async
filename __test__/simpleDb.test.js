@@ -25,7 +25,6 @@ describe('simpleDb creates files, as well as reads and copies them', () => {
     return dir.save(file).then((fileName) => {
       return dir.get(fileName)
     }).then((thing) => {
-      console.log(dir);
       expect(thing).toEqual(file);
     })
   })
@@ -35,7 +34,7 @@ describe('simpleDb creates files, as well as reads and copies them', () => {
     const file1 = { stuff: 'file1.txt'}
     const file2 = { stuff: 'file2.txt'}
 
-    return Promise.all([dir.save(file1), dir.save(file2)]).then(([name1, name2]) => {
+    return Promise.all([dir.save(file1), dir.save(file2)]).then(() => {
       dir.getAll().then((res) => {
         expect(res).toEqual([file1, file2]);
       })
